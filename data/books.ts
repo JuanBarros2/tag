@@ -654,7 +654,7 @@ export default [
         pages: 377,
         author: "Emmanuel Carrère",
         name: "Limonov",
-        isbn: "9788565620401",
+        isbn: "9782818014059",
         blocked: true,
         curator: "Marcelo Rubens Paiva",
         cover: {
