@@ -1,29 +1,11 @@
-import {
-  Center,
-  CircularProgress,
-  Flex,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import { BookTag } from "model";
-import React, { useMemo } from "react";
-import { useQuery } from "../providers/QueryProvider";
+import React from "react";
+import useFilteredBooks from "../../hooks/useFilteredBooks";
 import BookItem from "./BookItem";
 
 export default function BookList({ books }: { books: BookTag[] }) {
-  const [query] = useQuery();
-  const filteredBooks = useMemo(
-    () =>
-      query !== ""
-        ? books.filter(
-            (book) =>
-              book.name.toLocaleLowerCase().search(query.toLocaleLowerCase()) >=
-              0
-          )
-        : books,
-    [query]
-  );
-
+  const filteredBooks = useFilteredBooks(books);
   const columns = [
     1,
     1,

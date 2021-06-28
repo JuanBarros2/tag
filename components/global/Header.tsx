@@ -2,6 +2,7 @@ import { Flex, Text, Box } from "@chakra-ui/layout";
 import { Spacer, Avatar, Heading } from "@chakra-ui/react";
 import React from "react";
 import Breadcrumb from "./Breadcrumb";
+
 export default function Header() {
   return (
     <Box pb={2} w="full" borderBottom="1px solid" borderColor="cyan.500" mb={8}>
