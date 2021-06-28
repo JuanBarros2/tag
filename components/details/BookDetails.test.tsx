@@ -1,7 +1,7 @@
 import { Book } from "model";
 import React from "react";
 import BookDetails from "./BookDetails";
-import { screen, render } from "../../utils/test-utils";
+import { render } from "../../utils/test-utils";
 
 const book: Book = {
   author: "Stephen King",
