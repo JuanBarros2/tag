@@ -1,33 +1,30 @@
-import { Book } from "model";
+import { Book, BookTag } from "model";
 import React from "react";
 import BookDetails from "./BookDetails";
 import { render } from "../../utils/test-utils";
+import faker from "faker";
 
-const book: Book = {
-  author: "Stephen King",
-  name: "It",
-  blocked: false,
+const book = {
+  author: faker.name.findName(),
+  name: faker.lorem.words(),
   cover: {
-    __type: "URL",
-    name: "It",
-    url: "https://a-static.mlcdn.com.br/1500x1500/livro-it-a-coisa/magazineluiza/210947500/90e218266e0acd82a0019e3158d3269b.jpg",
+    url: faker.image.imageUrl(),
   },
-  createdAt: "",
-  curator: "Juan Barros",
+  curator: faker.name.findName(),
   edition: "Fevereiro de 2015",
-  isbn: "9788560280940",
-  numRatings: 312,
-  pages: 1541,
-  active: true,
-  objectId: "doa2131i2",
-  updatedAt: "",
-  totalRatings: 412,
-  goodReadsRatings: 132,
+  isbn: faker.datatype.string(9),
+  numRatings: faker.datatype.uuid(),
+  pages: faker.datatype.uuid(),
+  objectId: faker.datatype.string(10),
+  totalRatings: faker.datatype.uuid(),
+  goodReadsRatings: faker.datatype.uuid(),
 };
 
 describe("BookDetails tests", () => {
   it("should render book details", () => {
-    const { getByText } = render(<BookDetails book={book} />);
+    const { getByText } = render(
+      <BookDetails book={book as unknown as Book} />
+    );
     expect(getByText(book.author)).toBeInTheDocument();
     expect(getByText(book.name)).toBeInTheDocument();
     expect(getByText(`${book.pages} páginas`)).toBeInTheDocument();
